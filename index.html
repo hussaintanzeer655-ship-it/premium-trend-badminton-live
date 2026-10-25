@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Atelier Badminton Live</title>
+  <meta name="color-scheme" content="dark light" />
+  <style>
+    :root{
+      --bg: #0f0f12;
+      --surface: #171923;
+      --muted: #8b8f9e;
+      --text: #e8eaf6;
+      --brand: #7bd389;
+      --brand-2: #4f6df6;
+      --card: #1e2030;
+      --shadow: 0 10px 25px rgba(0,0,0,.35);
+      --radius: 16px;
+    }
+    html, body { margin:0; padding:0; background: radial-gradient( circle at 20% -10%, rgba(124,205,255,.08), transparent 40%), radial-gradient(circle at 100% 0%, rgba(123,211,137,.08), transparent 40%), var(--bg); color: var(--text); font-family: system-ui, -apple-system, "Segoe UI", Roboto; }
+    a { color: var(--brand); text-decoration: none; }
+    header { position: sticky; top: 0; z-index: 50; background: rgba(8,8,14,.8); backdrop-filter: saturate(1.2) blur(6px); border-bottom: 1px solid rgba(255,255,255,.06); }
+    .nav { max-width: 1100px; margin:0 auto; display:flex; align-items:center; justify-content: space-between; padding: 14px 20px; }
+    .brand { display:flex; align-items:center; gap:12px; font-weight: 700; letter-spacing:.4px; }
+    .brand .logo { width:28px; height:28px; border-radius:8px; background: conic-gradient(from 180deg at 50% 50%, #4f6df6, #7bd389, #4f6df6); display:inline-block; }
+    nav ul { list-style:none; display:flex; gap:22px; margin:0; padding:0; }
+    nav a { color: #eaf0ff; padding:8px 12px; border-radius:8px; }
+    nav a:focus-visible { outline:2px solid #fff; outline-offset:2px; }
+    .cta { background: linear-gradient(135deg, var(--brand-2), #8b5fff); padding:12px 20px; border-radius:999px; color:white; font-weight:600; }
+
+    .hero { display:grid; grid-template-columns: 1.1fr 0.9fr; gap: 40px; align-items: center; max-width:1100px; margin: 60px auto 40px; padding: 0 20px; }
+    .tag { display:inline-flex; align-items:center; gap:8px; padding:6px 12px; border-radius:999px; background: rgba(123,211,137,.15); color:#b6f7c1; font-weight:600; }
+    h1 { font-size: clamp(28px, 4vw, 52px); line-height:1.04; margin:0 0 12px; letter-spacing:.2px; }
+    p.lead { color: var(--muted); font-size: 1.05rem; max-width: 60ch; }
+    .hero-visual { height: 360px; border-radius: 22px; background: linear-gradient(135deg, rgba(79,109,246,.25), rgba(123,211,137,.25)); display:flex; align-items:center; justify-content:center; position:relative; overflow:hidden; box-shadow: var(--shadow); }
+    .grid-lines { position:absolute; width:100%; height:100%; background-image: linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(to bottom, rgba(0,0,0,.9), rgba(0,0,0,.1)); }
+    .hero-cta { display:flex; gap:14px; align-items:center; margin-top: 18px; }
+    .section { max-width:1100px; margin: 40px auto; padding: 0 20px; }
+    .grid { display:grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+    .card { background: linear-gradient(#141522, #1a1a2a); border-radius: var(--radius); padding: 18px; box-shadow: var(--shadow); border:1px solid rgba(255,255,255,.05); }
+    .card h3 { margin:0 0 6px; font-size: 1.05rem; }
+    .card p { margin:0; color: var(--muted); font-size:.95rem; }
+    .stat { font-family: ui-monospace,SFMono-Regular,Monaco,Consolas,"Courier New"; font-weight:700; font-size:1.2rem; }
+    .footer { border-top: 1px solid rgba(255,255,255,.08); padding: 28px 20px; color: #a9b4c7; display:flex; justify-content:space-between; align-items:center; gap:16px; flex-wrap:wrap; }
+    .footer small { opacity:.9; }
+    @media (max-width: 1024px){
+      .grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 760px){
+      .hero { grid-template-columns: 1fr; margin: 40px auto; }
+      .hero-visual { height: 260px; }
+      .grid { grid-template-columns: 1fr; }
+      .nav { padding: 12px 14px; }
+    }
+    [data-keyboard-focus]:focus { outline: 2px solid #fff; outline-offset: 2px; }
+    /* small decorative gradient texture */
+    .texture { position:absolute; right:-40px; bottom:-40px; width:180px; height:180px; border-radius:50%; background: radial-gradient(circle at 30% 30%, rgba(123,211,137,.7), transparent 40%), radial-gradient(circle at 70% 70%, rgba(79,109,246,.7), transparent 40%); filter: blur(0.5px); opacity:.35; pointer-events:none; }
+  </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src='https://www.googletagmanager.com/gtag/js?id=G-H4VF7WNZRR'></script><script>window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date()); gtag('config', 'G-H4VF7WNZRR');</script>
+</head>
+<body>
+  <header>
+    <div class="nav" aria-label="Main navigation">
+      <div class="brand" role="brand">
+        <span class="logo" aria-label="Brand logo"></span>
+        <span>Atelier</span>
+      </div>
+      <nav aria-label="Primary">
+        <ul role="menubar">
+          <li role="none"><a href="#overview" role="menuitem" tabindex="0">Overview</a></li>
+          <li role="none"><a href="#insights" role="menuitem" tabindex="0">Insights</a></li>
+          <li role="none"><a href="#technologies" role="menuitem" tabindex="0">Technologies</a></li>
+          <li role="none"><a href="#cta" role="button" tabindex="0" class="cta" style="line-height:1.2;">Get Early Access</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+
+    <section class="hero section" aria-label="Hero">
+      <div>
+        <span class="tag" aria-label="Trend tag">
+          🏸 Badminton Live
+        </span>
+        <h1>Premium, editorial, data-driven coverage of live badminton trends</h1>
+        <p class="lead">A production-ready, single-page site that feels crafted by a top digital studio. Deep-dive typography, restrained motion, and a clear narrative around live badminton insights, player momentum, and event signals.</p>
+        <div class="hero-cta" id="cta" aria-label="Primary actions">
+          <button class="cta" onclick="navigateTo('#overview')" aria-label="View overview">Explore Overview</button>
+          <button class="cta" onclick="navigateTo('#insights')" aria-label="View insights" style="background: #33475d;">View Insights</button>
+        </div>
+      </div>
+      <div class="hero-visual" aria-label="Hero visualization">
+        <span style="font-size:72px; filter: drop-shadow(0 6px 14px rgba(0,0,0,.25));">🎾</span>
+        <div class="grid-lines" aria-hidden="true"></div>
+        <div class="texture" aria-hidden="true"></div>
+      </div>
+    </section>
+
+    <section id="overview" class="section" aria-label="Overview">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:20px; flex-wrap:wrap;">
+        <h2 style="margin:0;">Brand concept: Precision Playbook</h2>
+        <span class="tag" aria-label="Trend scope" style="background: rgba(123,211,137,.15); color:#bfe6c2;">Trend-driven narrative</span>
+      </div>
+      <p style="color:var(--muted); max-width:64ch;">We present badminton live as a refined, editorial experience: data hierarchy that guides attention, a restrained palette, and copy that speaks with credibility about momentum, match dynamics, and audience signals. No hype, only signal-driven storytelling.</p>
+      <div class="grid" style="margin-top:18px;">
+        <div class="card" aria-label="Editorial grid item">
+          <h3>Editorial Priority</h3>
+          <p>Signal-first: momentum, pairings, and court-side context distilled for executives, broadcasters, and fans seeking trusted, concise insights.</p>
+        </div>
+        <div class="card" aria-label="Editorial grid item">
+          <h3>Content Architecture</h3>
+          <p>Hero data blocks, trend cards, expert briefs, and event schedules with precise typography and generous spacing.</p>
+        </div>
+        <div class="card" aria-label="Editorial grid item">
+          <h3>Audience Promise</h3>
+          <p>For sports professionals and enthusiasts who value craft, depth, and a studio-grade presentation—without noise.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="insights" class="section" aria-label="Insights">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+        <h2 style="margin:0;">Key Insight Blocks</h2>
+        <span class="tag" aria-label="Data tone" style="background: rgba(79,109,246,.15); color:#d5e0ff;">Trend signals</span>
+      </div>
+      <div class="grid" aria-label="Insight cards">
+        <div class="card" tabindex="0" data-keyboard-focus>
+          <h3>Head-to-Head Momentum</h3>
+          <p>Live data shows a rising momentum for top doubles pairings in the last 14 days.</p>
+          <p class="stat" aria-label="Momentum value">+18% momentum</p>
+        </div>
+        <div class="card" tabindex="0" data-keyboard-focus>
+          <h3>Event Signals</h3>
+          <p>Early indicators suggest peak viewership during finals windows and semi-final telecasts.</p>
+          <p class="stat" aria-label="Signals value">Finals window uplift</p>
+        </div>
+        <div class="card" tabindex="0" data-keyboard-focus>
+          <h3>Audience Behavior</h3>
+          <p>Verified engagement patterns for live streams, chat, and social clips across mobile.</p>
+          <p class="stat" aria-label="Audience value">Mobile-first engagement</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="technologies" class="section" aria-label="Technologies">
+      <div style="display:flex; align-items:baseline; justify-content:space-between; gap:12px;">
+        <h2 style="margin:0;">Production Toolkit</h2>
+        <span class="tag" aria-label="Tech tone" style="background: rgba(93, 63, 214,.15); color:#d6d0ff;">Studio-grade UI</span>
+      </div>
+      <div class="grid" style="margin-top:14px;">
+        <div class="card" tabindex="0" data-keyboard-focus>
+          <h3>Typography System</h3>
+          <p>A clean, editorial type scale with generous line-height and deliberate contrast for readability.</p>
+        </div>
+        <div class="card" tabindex="0" data-keyboard-focus>
+          <h3>Color System</h3>
+          <p> restrained gradients and textures that nod to court atmosphere without overpowering content.</p>
+        </div>
+        <div class="card" tabindex="0" data-keyboard-focus>
+          <h3>Micro-interactions</h3>
+          <p>Subtle hover states, soft shadows, and tasteful transitions to reinforce hierarchy.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" aria-label="Primary CTA">
+      <div class="card" style="display:flex; align-items:center; justify-content:space-between; padding:28px;">
+        <div>
+          <h3 style="margin:0 0 6px;">Join the preview</h3>
+          <p style="margin:0; color:var(--muted);">Be among the first to experience production-ready badminton live insights.</p>
+        </div>
+        <button id="cta-primary" class="cta" onclick="navigateTo('#cta-form')" aria-label="Get early access">Request Early Access</button>
+      </div>
+    </section>
+
+    <section id="cta-form" class="section" aria-label="Newsletter signup" style="margin-bottom:60px;">
+      <div class="grid" style="grid-template-columns: 1fr 1fr; align-items: center;">
+        <div class="card" aria-label="Signup intro" style="min-height:120px;">
+          <h3 style="margin:0 0 6px;">Stay in the loop</h3>
+          <p style="margin:0; color:var(--muted);">Receive concise briefs on live badminton signals, moments, and analytics.</p>
+        </div>
+        <form class="card" onsubmit="submitForm(event)" aria-label="Signup form" style="display:flex; flex-direction:column; gap:10px;">
+          <label for="email" style="font-size:.9rem; color:#cbd6e6;">Email</label>
+          <input id="email" name="email" type="email" required placeholder="you@example.com" style="padding:12px; border-radius:8px; border:1px solid rgba(255,255,255,.2); background:#0f1020; color:#fff;" />
+          <button class="cta" type="submit" style="width:180px; align-self:flex-start;">Join</button>
+        </form>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer" aria-label="Footer">
+    <div style="display:flex; align-items:center; gap:12px;">
+      <span class="logo" aria-label="Brand glyph" style="width:20px; height:20px; border-radius:6px; background: linear-gradient(135deg, #4f6df6, #7bd389); display:inline-block;"></span>
+      <small>Atelier Studio — Crafted for live sports analytics and premium editorial UI</small>
+    </div>
+    <div>
+      <small>© 2026 Atelier. All rights reserved.</small>
+    </div>
+  </footer>
+
+  <script>
+    function navigateTo(hash){
+      if(!hash) return;
+      const el = document.querySelector(hash);
+      if(el){
+        el.scrollIntoView({behavior:'smooth', block:'start'});
+        el.focus && el.focus();
+      }
+    }
+    function submitForm(e){
+      e.preventDefault();
+      const email = document.getElementById('email').value;
+      if(!email) return;
+      alert('Thank you. We will email you with the production-ready preview details at ' + email);
+      document.getElementById('email').value = '';
+    }
+  </script>
+</body>
+</html>
